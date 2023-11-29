@@ -113,7 +113,7 @@ async function postEpisode(youtubeVideoInfo) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async function newLogin() {
+  async function login() {
     console.log('-- Accessing new Spotify login page for podcasts');
     await clickXpath(page, '//span[contains(text(), "Continue with Spotify")]/parent::button');
 
