@@ -1,4 +1,4 @@
-name: 'Upload as draft'
+name: 'Upload as draft with youtube url'
 
 on:
   push:
@@ -18,3 +18,4 @@ jobs:
           ANCHOR_PASSWORD: ${{ secrets.ANCHOR_PASSWORD }}
           EPISODE_PATH: /github/workspace
           SAVE_AS_DRAFT: true
+          URL_IN_DESCRIPTION: true
