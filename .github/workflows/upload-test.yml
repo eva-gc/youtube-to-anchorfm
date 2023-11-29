@@ -1,4 +1,4 @@
-name: '[DEMO] Upload Episode from YouTube To Anchor.Fm'
+name: 'Upload as draft'
 
 on:
   push:
@@ -12,8 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Upload Episode from YouTube To Anchor.Fm
-        uses: Schrodinger-Hat/youtube-to-anchorfm@v2.0.0
+        uses: eva-gc/youtube-to-anchorfm@main
         env:
           ANCHOR_EMAIL: ${{ secrets.ANCHOR_EMAIL }}
           ANCHOR_PASSWORD: ${{ secrets.ANCHOR_PASSWORD }}
           EPISODE_PATH: /github/workspace
+          SAVE_AS_DRAFT: true
