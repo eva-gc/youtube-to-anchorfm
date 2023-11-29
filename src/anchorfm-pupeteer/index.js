@@ -120,13 +120,14 @@ async function postEpisode(youtubeVideoInfo) {
     console.log('-- Logging in');
     await page.waitForSelector('#login-username');
     await page.type('#login-username', env.ANCHOR_EMAIL);
+    await sleep(2000)
     await page.type('#login-password', env.ANCHOR_PASSWORD);
-    await sleep(1000)
+    await sleep(5000)
   
     await clickSelector(page, 'button[id="login-button"]');
     await page.waitForNavigation();
     console.log('-- Logged in');
-  
+    
     await clickSelector(page, 'button[data-testid="auth-accept"]');
     await page.waitForNavigation();
     console.log('-- In the app');
