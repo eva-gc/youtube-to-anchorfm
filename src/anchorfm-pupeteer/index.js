@@ -120,7 +120,7 @@ async function postEpisode(youtubeVideoInfo) {
     console.log('-- Logging in');
     await page.waitForSelector('#login-username');
     await page.type('#login-username', env.ANCHOR_EMAIL);
-    await sleep(2020)
+    await sleep(2010)
     await page.type('#login-password', env.ANCHOR_PASSWORD);
     await sleep(5020)
     console.log('-- Details in');
@@ -129,7 +129,7 @@ async function postEpisode(youtubeVideoInfo) {
     await page.waitForNavigation();
     console.log('-- Logged in');
 
-    await sleep(2020)
+    await sleep(1030)
     await clickSelector(page, 'button[data-testid="auth-accept"]');
     await page.waitForNavigation();
     console.log('-- In the app');
