@@ -109,23 +109,28 @@ async function postEpisode(youtubeVideoInfo) {
     await clickSelector(page, 'div[aria-label="Language selection modal"] a[data-testid="language-option-en"]');
   }
 
-  async function login() {
-    console.log('-- Accessing Spotify for Podcasters login page');
-    await clickXpath(page, '//button[contains(text(), "Continue")]');
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  async function newLogin() {
+    console.log('-- Accessing new Spotify login page for podcasts');
+    await clickXpath(page, '//span[contains(text(), "Continue with Spotify")]/parent::button');
 
     console.log('-- Logging in');
-    /* The reason for the wait is because
-    anchorfm can take a little longer to load the form for logging in
-    and because pupeteer treats the page as loaded(or navigated to)
-    even when the form is not showed
-    */
-    await page.waitForSelector('#email');
-    await page.type('#email', env.ANCHOR_EMAIL);
-    await page.type('#password', env.ANCHOR_PASSWORD);
-    await clickSelector(page, 'button[type=submit]');
+    await page.waitForSelector('#login-username');
+    await page.type('#login-username', env.ANCHOR_EMAIL);
+    await page.type('#login-password', env.ANCHOR_PASSWORD);
+    await sleep(1000)
+  
+    await clickSelector(page, 'button[id="login-button"]');
     await page.waitForNavigation();
     console.log('-- Logged in');
-  }
+  
+    await clickSelector(page, 'button[data-testid="auth-accept"]');
+    await page.waitForNavigation();
+    console.log('-- In the app');
+}
 
   async function waitForNewEpisodeWizard() {
     await sleepSeconds(1);
