@@ -119,10 +119,11 @@ async function postEpisode(youtubeVideoInfo) {
 
     console.log('-- Logging in');
     await page.waitForSelector('#login-username');
+    await sleep(5030)
     await page.type('#login-username', env.ANCHOR_EMAIL);
-    await sleep(2010)
+    await sleep(5002)
     await page.type('#login-password', env.ANCHOR_PASSWORD);
-    await sleep(5020)
+    await sleep(10002)
     console.log('-- Details in');
   
     await clickSelector(page, 'button[id="login-button"]');
